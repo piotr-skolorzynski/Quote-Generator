@@ -31,7 +31,6 @@ body {
     padding: 2rem 3rem;
     width: auto;
     max-width: 900px;
-    height: 280px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, .35);
     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, .15);
@@ -40,6 +39,10 @@ body {
 .quote-text {
     font-size: 4.4rem;
     color: #000;
+}
+
+#quote {
+    padding-left: 1rem;
 }
 
 @media screen and (max-width: 992px) {
