@@ -19,7 +19,7 @@ const createQuoteElements = (quoteApi, authorApi) => {
     const quoteWrapper = document.createElement('div');
     quoteWrapper.classList.add('quote-wrapper');
     quoteWrapper.setAttribute('id', 'quote-wrapper');
-
+    
     const quoteText = document.createElement('div');
     quoteText.classList.add('quote-text');
     const quotationMark = document.createElement('span');
@@ -28,14 +28,14 @@ const createQuoteElements = (quoteApi, authorApi) => {
     quoteText.appendChild(quotationMark);
     const quote = document.createElement('span');
     quote.setAttribute('id', 'quote');
-    quote.innerHTML = quoteApi;
+    quote.innerText = quoteApi;
     quoteText.appendChild(quote);
 
     const quoteAuthor = document.createElement('div');
     quoteAuthor.classList.add('quote-author');
     const author = document.createElement('span');
     author.setAttribute('id', 'author');
-    author.innerHTML = authorApi;
+    author.innerText = authorApi;
     quoteAuthor.appendChild(author);
 
     const btnContainer = document.createElement('div');
@@ -52,7 +52,7 @@ const createQuoteElements = (quoteApi, authorApi) => {
     const btnNewQuote = document.createElement('button');
     btnNewQuote.classList.add('new-quote');
     btnNewQuote.setAttribute('id', 'new-quote');
-    btnNewQuote.innerHTML = 'New Quote';
+    btnNewQuote.innerText = 'New Quote';
     btnContainer.appendChild(btnNewQuote);
 
     quoteWrapper.appendChild(quoteText);
@@ -61,6 +61,18 @@ const createQuoteElements = (quoteApi, authorApi) => {
 
     const body = document.querySelector('body');
     body.appendChild(quoteWrapper);
+};
+
+//show newQuote
+const showNewQuote = () => {
+    const newQuote = chooseQuote();
+    // console.log(newQuote);
+    const quote = document.getElementById('quote');
+    // console.log(quote);
+    quote.innerText = newQuote.text;
+    const author = document.getElementById('author');
+    // console.log(author);
+    author.innerText = newQuote.author;
 };
 
 //get quotes from api and show random one
@@ -73,6 +85,8 @@ async function getQuotes() {
         const newQuote = chooseQuote();
         // console.log(newQuote);
         createQuoteElements(newQuote.text, newQuote.author);
+        const newQuoteBtn = document.getElementById('new-quote');
+        newQuoteBtn.addEventListener('click', showNewQuote);
     } catch (err) {
         console.log(err);
     }
