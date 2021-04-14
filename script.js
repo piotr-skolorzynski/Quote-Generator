@@ -11,10 +11,14 @@ const chooseQuote = () => {
     const randomIndex = generateIndex(0, ($apiQuotes.length - 1));
     const randomQuote = $apiQuotes[randomIndex];
     // console.log(randomQuote);
+    // check if there is author. If not show unknown
+    if (!randomQuote.author) {
+        randomQuote.author = 'Unknown';
+    }
     return randomQuote;
 };
 
-//create quote
+//create quote dynamically (just for exercise ;)
 const createQuoteElements = (quoteApi, authorApi) => {
     const quoteWrapper = document.createElement('div');
     quoteWrapper.classList.add('quote-wrapper');
@@ -28,6 +32,11 @@ const createQuoteElements = (quoteApi, authorApi) => {
     quoteText.appendChild(quotationMark);
     const quote = document.createElement('span');
     quote.setAttribute('id', 'quote');
+    if (quoteApi.length > 120) {
+        quote.classList.add('quote-long-text');
+    } else {
+       quote.classList.remove('quote-long-text'); 
+    }
     quote.innerText = quoteApi;
     quoteText.appendChild(quote);
 
@@ -69,6 +78,11 @@ const showNewQuote = () => {
     // console.log(newQuote);
     const quote = document.getElementById('quote');
     // console.log(quote);
+    if (newQuote.text.length > 120) {
+        quote.classList.add('quote-long-text');
+    } else {
+        quote.classList.remove('quote-long-text'); 
+    }
     quote.innerText = newQuote.text;
     const author = document.getElementById('author');
     // console.log(author);
