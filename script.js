@@ -89,6 +89,16 @@ const showNewQuote = () => {
     author.innerText = newQuote.author;
 };
 
+//tweet quote
+const tweetQuote = () => {
+    const quote = document.getElementById('quote');
+    const author = document.getElementById('author');
+    // console.log(quote.innerText);
+    // console.log(author.innerText);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quote.innerText} - ${author.innerText}`;
+    window.open(twitterUrl, '_blank');
+};
+
 //get quotes from api and show random one
 async function getQuotes() {
     const url = "https://type.fit/api/quotes";
@@ -101,8 +111,11 @@ async function getQuotes() {
         createQuoteElements(newQuote.text, newQuote.author);
         const newQuoteBtn = document.getElementById('new-quote');
         newQuoteBtn.addEventListener('click', showNewQuote);
+        const twitterBtn = document.getElementById('twitter-btn');
+        twitterBtn.addEventListener('click', tweetQuote);
     } catch (err) {
         console.log(err);
     }
 };
+
 getQuotes();
