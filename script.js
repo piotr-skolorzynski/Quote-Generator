@@ -22,9 +22,9 @@ const createQuoteElements = (quoteApi, authorApi) => {
 
     const quoteText = document.createElement('div');
     quoteText.classList.add('quote-text');
-    const quotationMark = document.createElement('i');
-    quotationMark.classList.add('fas');
-    quotationMark.classList.add('fa-quote-left');
+    const quotationMark = document.createElement('span');
+    quotationMark.classList.add('icon');
+    quotationMark.classList.add('quote-mark');
     quoteText.appendChild(quotationMark);
     const quote = document.createElement('span');
     quote.setAttribute('id', 'quote');
@@ -44,9 +44,9 @@ const createQuoteElements = (quoteApi, authorApi) => {
     btnTwitter.classList.add('twitter-btn');
     btnTwitter.setAttribute('id', 'twitter-btn');
     btnTwitter.setAttribute('title', 'Tweet this');
-    const twitterIcon = document.createElement('i');
-    twitterIcon.classList.add('fab');
-    twitterIcon.classList.add('fa-twitter');
+    const twitterIcon = document.createElement('span');
+    twitterIcon.classList.add('icon');
+    twitterIcon.classList.add('twitter');
     btnTwitter.appendChild(twitterIcon);
     btnContainer.appendChild(btnTwitter);
     const btnNewQuote = document.createElement('button');
