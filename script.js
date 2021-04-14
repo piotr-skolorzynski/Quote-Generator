@@ -1,4 +1,15 @@
+const $loader = document.getElementById('loader');
 let $apiQuotes = [];
+
+//show loader
+const showLoader = () => {
+    $loader.hidden = false;
+};
+
+//hide loader
+const hideLoader = () => {
+    $loader.hidden = true;
+};
 
 //generate random index
 const generateIndex = (min,max) => {
@@ -70,10 +81,12 @@ const createQuoteElements = (quoteApi, authorApi) => {
 
     const body = document.querySelector('body');
     body.appendChild(quoteWrapper);
+    hideLoader();
 };
 
 //show newQuote
 const showNewQuote = () => {
+    showLoader();
     const newQuote = chooseQuote();
     // console.log(newQuote);
     const quote = document.getElementById('quote');
@@ -87,6 +100,7 @@ const showNewQuote = () => {
     const author = document.getElementById('author');
     // console.log(author);
     author.innerText = newQuote.author;
+    hideLoader();
 };
 
 //tweet quote
@@ -101,6 +115,7 @@ const tweetQuote = () => {
 
 //get quotes from api and show random one
 async function getQuotes() {
+    showLoader();
     const url = "https://type.fit/api/quotes";
     try {
         const response = await fetch(url);
@@ -118,4 +133,4 @@ async function getQuotes() {
     }
 };
 
-getQuotes();
+document.addEventListener('DOMContentLoaded', getQuotes);

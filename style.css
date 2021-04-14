@@ -23,6 +23,25 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238c722e' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M0 0h35v35H0V0zm5 5h25v25H5V5zm5 5h15v15H10V10zm5 5h5v5h-5v-5zM40 5h25v25H40V5zm5 5h15v15H45V10zm5 5h5v5h-5v-5zM70 35H35v35h35V35zm-5 5H40v25h25V40zm-5 5H45v15h15V45zm-5 5h-5v5h5v-5zM30 40H5v25h25V40zm-5 5H10v15h15V45zm-5 5h-5v5h5v-5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+.loader {
+    border: 16px solid #bfcef5;
+    border-top: 16px solid #ad8d3d;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .quote-wrapper {
     display: flex;
     flex-direction: column;
@@ -89,7 +108,7 @@ body {
 }
 
 .button-container button {
-    padding: 0.5rem 1.8rem;
+    padding: .8rem 3rem;
     font-size: 2rem;
     color: #fff;
     border: none;
