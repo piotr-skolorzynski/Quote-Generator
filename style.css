@@ -23,9 +23,10 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238c722e' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M0 0h35v35H0V0zm5 5h25v25H5V5zm5 5h15v15H10V10zm5 5h5v5h-5v-5zM40 5h25v25H40V5zm5 5h15v15H45V10zm5 5h5v5h-5v-5zM70 35H35v35h35V35zm-5 5H40v25h25V40zm-5 5H45v15h15V45zm-5 5h-5v5h5v-5zM30 40H5v25h25V40zm-5 5H10v15h15V45zm-5 5h-5v5h5v-5z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+/* page animated loader */
 .loader {
     border: 16px solid #bfcef5;
-    border-top: 16px solid #ad8d3d;
+    border-top: 16px solid #000;
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -42,6 +43,7 @@ body {
     }
 }
 
+/* main quote container */
 .quote-wrapper {
     display: flex;
     flex-direction: column;
@@ -55,9 +57,9 @@ body {
     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, .15);
 }
 
+/* quote text container */
 .quote-text {
     font-size: 4.4rem;
-    color: #000;
 }
 
 @media screen and (max-width: 992px) {
@@ -70,11 +72,12 @@ body {
     }
 }
 
-/* for longer text */
+/* for quote longer text */
 .quote-long-text {
     font-size: 3.2rem;
 }
 
+/* universal class for all font-awesome icons */
 .icon::before {
     display: inline-block;
     font-style: normal;
@@ -83,6 +86,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* quote-mark icon */
 .quote-mark::before {
     font-family: "Font Awesome 5 Free";
     content: "\f10d";
@@ -91,56 +95,74 @@ body {
     margin-right: 2rem;
 }
 
+/* container for quote author */
 .quote-author {
-    margin-top: 15px;
+    margin-top: 1.5rem;
     font-size: 3.2rem;
     font-weight: lighter;
     font-style: italic;
-    color: #000;
 }
 
+/* container to group quote buttons */
 .button-container {
     margin-top: 15px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    ;
 }
 
+/* universal style for buttons */
 .button-container button {
-    padding: .8rem 3rem;
-    font-size: 2rem;
+    transition: transform .3s, box-shadow .2s, color .5s;
+    position: relative;
+    padding: 1.25rem 3.5rem;
+    background: none;
+    font-size: 2.4rem;
     color: #fff;
-    border: none;
-    border-radius: 5px;
+    border: 1px solid #fff;
+    border-radius: 8px;
     outline: none;
+    box-shadow: 0 .4rem rgb(139, 161, 216);
     cursor: pointer;
-    background-color: #ad8d3d;
-    box-shadow: 0 .4rem rgba(156, 123, 40, 0.6);
-    transition: transform .3s, box-shadow .2s, color .3s;
+    overflow: hidden;
 }
 
-.button-container button:hover {
-    filter: brightness(110%);
-}
-
+/* universal behave for buttons when active */
 .button-container button:active {
     transform: translate(0, .5rem);
-    box-shadow: 0 .2rem rgba(150, 125, 62, 0.65);
+    box-shadow: 0 .2rem rgb(139, 161, 216);
 }
 
+/* button pseudo-element */
+.glass::before {
+    display: block;
+    position: absolute;
+    content: '';
+    transition: left .5s;
+    z-index: -1;
+    top: -30px;
+    left: -130px;
+    height: 160%;
+    width: 100px;
+    background-image: linear-gradient(-90deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+    transform: rotate(20deg);
+}
+
+/* glass effect for button pseudo-element */
+.glass:hover::before {
+    left: 130%;
+}
+
+/* twitter changing color*/
 .twitter-btn:hover {
     color: #1DA1F2;
 }
 
+/* twitter icon as a pseudo-element */
 .twitter::before {
     content: "\f099";
     font-size: 2.5rem;
     font-family: "Font Awesome 5 Brands";
-}
-
-new-quote {
-    transition: color .3s;
 }
 
 .new-quote:hover {
